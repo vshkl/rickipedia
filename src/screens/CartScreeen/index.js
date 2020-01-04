@@ -1,11 +1,18 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { SafeAreaView } from 'react-native'
+import { Searchbar } from 'react-native-paper'
 
 const CartScreen = () => {
+  const [query, setQuery] = useState('')
+
   return (
-    <View>
-      <Text>Cart screen</Text>
-    </View>
+    <SafeAreaView>
+      <Searchbar
+        placeholder="What would you like to buy?"
+        onChangeText={query => setQuery(query)}
+        value={query}
+      />
+    </SafeAreaView>
   )
 }
 
