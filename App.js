@@ -1,40 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react'
-import {
-  SafeAreaView,
-  StatusBar,
-  View,
-} from 'react-native'
+import { NavigationNativeContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import { Cart } from './src/models'
+import CartScreen from './src/screens/CartScreeen'
 
-class App extends React.PureComponent {
-  componentDidMount() {
-    const cart = Cart.create({ products: [] })
+const Stack = createStackNavigator()
 
-    cart.addProduct('apple')
-    cart.addProduct('sour cream')
-
-    console.log(cart)
-  }
-
-  render() {
-    return (
-      <>
-        <StatusBar barStyle="dark-content"/>
-        <SafeAreaView>
-          <View/>
-        </SafeAreaView>
-      </>
-    );
-  }
+const App = () => {
+  return (
+    <NavigationNativeContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Cart" component={CartScreen} />
+      </Stack.Navigator>
+    </NavigationNativeContainer>
+  )
 }
 
 export default App
