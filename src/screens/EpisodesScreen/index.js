@@ -1,21 +1,26 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import EpisodeCard from '../../components/EpisodeCard'
+import List from '../../components/List'
 
 const EpisodesScreen = () => {
   return (
     <View>
-      <Text>
-        EpisodesScreen
-      </Text>
-      <EpisodeCard episode={{
-        id: 1,
-        name: "Pilot",
-        airDate: "December 2, 2013",
-        season: 1,
-        episode: 1,
-      }}/>
+      <List
+        data={[]}
+        renderItem={({ item }) => (
+          <EpisodeCard
+            episode={{
+              id: item.id,
+              name: item.name,
+              airDate: item.airDate,
+              season: item.season,
+              episode: item.episode,
+            }}
+          />
+        )}
+      />
     </View>
   )
 }

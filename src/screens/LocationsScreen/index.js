@@ -1,21 +1,24 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import LocationCard from '../../components/LocationCard'
+import List from '../../components/List'
 
 const LocationsScreen = () => {
   return (
     <View>
-      <Text>
-        LocationsScreen
-      </Text>
-      <LocationCard
-        location={{
-          id: 1,
-          name: 'Earth (C-137)',
-          type: 'Planet',
-          dimension:' Dimension C-137',
-        }}
+      <List
+        data={[]}
+        renderItem={({ item }) => (
+          <LocationCard
+            location={{
+              id: item.id,
+              name: item.name,
+              type:	item.type,
+              dimension: item.dimension,
+            }}
+          />
+        )}
       />
     </View>
   )

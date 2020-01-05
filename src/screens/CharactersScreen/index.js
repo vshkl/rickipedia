@@ -1,23 +1,26 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import CharacterCard from '../../components/CharacterCard'
+import List from '../../components/List'
 
 const CharactersScreen = () => {
   return (
     <View>
-      <Text>
-        CharactersScreen
-      </Text>
-      <CharacterCard
-        character={{
-          id: 1,
-          name: 'Rick Sanchez',
-          status:	'Alive',
-          species: 'Human',
-          origin: 'Earth (C-137)',
-          location: 'Earth (Replacement Dimension)',
-        }}
+      <List
+        data={[]}
+        renderItem={({ item }) => (
+          <CharacterCard
+            character={{
+              id: item.id,
+              name: item.name,
+              status:	item.status,
+              species: item.species,
+              origin: item.origin,
+              location: item.location,
+            }}
+          />
+        )}
       />
     </View>
   )
