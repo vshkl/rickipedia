@@ -3,6 +3,7 @@ import { enableScreens } from 'react-native-screens'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import CharactersScreen from '../screens/CharactersScreen'
 import EpisodesScreen from '../screens/EpisodesScreen'
@@ -34,11 +35,33 @@ const LocationsStack = () => (
 const MainNavigator = () => (
   <NavigationNativeContainer>
     <Tab.Navigator>
-      <Tab.Screen name="Episodes" component={EpisodesStack} />
-      <Tab.Screen name="Characters" component={CharactersStack} />
-      <Tab.Screen name="Locations" component={LocationsStack} />
+      <Tab.Screen
+        name="Episodes"
+        component={EpisodesStack}
+        options={{
+          tabBarIcon: composeTabBarIcon('youtube'),
+        }}
+      />
+      <Tab.Screen
+        name="Characters"
+        component={CharactersStack}
+        options={{
+          tabBarIcon: composeTabBarIcon('human-handsup'),
+        }}
+      />
+      <Tab.Screen
+        name="Locations"
+        component={LocationsStack}
+        options={{
+          tabBarIcon: composeTabBarIcon('map-marker'),
+        }}
+      />
     </Tab.Navigator>
   </NavigationNativeContainer>
+)
+
+const composeTabBarIcon = (name) => ({ color, size }) => (
+  <MaterialCommunityIcons name={name} color={color} size={size} />
 )
 
 export {
