@@ -5,7 +5,13 @@ const mapLinkToId = (link) =>
   parseInt(link.split('/').reverse()[0])
 
 const mapLinksToIds = (links) =>
-  parseInt(links.map(it => it.split('/').reverse()[0]))
+  links.map(mapLinkToId)
+
+const mapSeasonNumber = (seasonAndEpisode) =>
+  parseInt(seasonAndEpisode.match(/\d+/g)[0])
+
+const mapEpisodeNumber = (seasonAndEpisode) =>
+  parseInt(seasonAndEpisode.match(/\d+/g)[1])
 
 const mapInfo = (info) => ({
   count: info.count,
@@ -23,4 +29,6 @@ export {
   mapLinkToId,
   mapLinksToIds,
   mapResponse,
+  mapSeasonNumber,
+  mapEpisodeNumber,
 }

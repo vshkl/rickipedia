@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import CharacterCard from '../../components/CharacterCard'
 import List from '../../components/List'
 
-import api from '../../models/Characters/api'
+import api from '../../models/Episodes/api'
 
 api.getAll(1)
   .then(console.log)
