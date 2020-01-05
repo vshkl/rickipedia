@@ -11,19 +11,11 @@ const CharacterCard = ({ character, onPress }) => {
       </WrapTitle>
       <Row>
         <TextContent>Status</TextContent>
-        <TextContent>{character.status}</TextContent>
+        <TextContent>{character.status === 'unknown' ? 'N/A' : character.status}</TextContent>
       </Row>
       <Row>
         <TextContent>Species</TextContent>
-        <TextContent>{character.species}</TextContent>
-      </Row>
-      <Row>
-        <TextContent>Origin</TextContent>
-        <TextContent>{character.origin}</TextContent>
-      </Row>
-      <Row>
-        <TextContent>Location</TextContent>
-        <TextContent>{character.location}</TextContent>
+        <TextContent>{character.species === 'unknown' ? 'N/A' : character.species}</TextContent>
       </Row>
     </TouchableCard>
   )
@@ -37,8 +29,6 @@ CharacterCard.propTypes = {
     name: string,
     status: string,
     species: string,
-    origin: string,
-    location: string,
     image: string,
   }).isRequired,
   onPress: func,

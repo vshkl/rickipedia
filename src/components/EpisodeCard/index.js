@@ -4,18 +4,17 @@ import PropTypes from 'prop-types'
 import { Row, TextContent, TextTitle, TouchableCard, WrapTitle } from './styled'
 
 const EpisodeCard = ({ episode, onPress }) => {
+  const formatNumber = (number) =>
+    number.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping:false })
+
   return (
     <TouchableCard onPress={() => onPress(episode.id)}>
       <WrapTitle>
         <TextTitle>{episode.name}</TextTitle>
       </WrapTitle>
       <Row>
-        <TextContent>Season</TextContent>
-        <TextContent>{episode.season}</TextContent>
-      </Row>
-      <Row>
         <TextContent>Episode</TextContent>
-        <TextContent>{episode.episode}</TextContent>
+        <TextContent>{`s${formatNumber(episode.season)}e${formatNumber(episode.episode)}`}</TextContent>
       </Row>
       <Row>
         <TextContent>Air date</TextContent>

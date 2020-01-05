@@ -11,11 +11,11 @@ const LocationCard = ({ location, onPress }) => {
       </WrapTitle>
       <Row>
         <TextContent>Type</TextContent>
-        <TextContent>{location.type}</TextContent>
+        <TextContent>{location.type === 'unknown' ? 'N/A' : location.type}</TextContent>
       </Row>
       <Row>
         <TextContent>Dimension</TextContent>
-        <TextContent>{location.dimension}</TextContent>
+        <TextContent>{location.dimension === 'unknown' ? 'N/A' : location.dimension}</TextContent>
       </Row>
     </TouchableCard>
   )
