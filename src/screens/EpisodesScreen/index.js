@@ -8,7 +8,7 @@ import List from '../../components/List'
 import episodesActions from '../../models/Episodes/actions'
 import episodesSelectors from '../../models/Episodes/selectors'
 
-const EpisodesScreen = ({ episodes, loadEpisodes, refreshEpisodes }) => {
+const EpisodesScreen = ({ episodes, loadingState, loadEpisodes, refreshEpisodes }) => {
   useEffect(() => {
     loadEpisodes()
   }, [])
@@ -17,17 +17,9 @@ const EpisodesScreen = ({ episodes, loadEpisodes, refreshEpisodes }) => {
     <View>
       <List
         data={episodes}
-        renderItem={({ item }) => (
-          <EpisodeCard
-            episode={{
-              id: item.id,
-              name: item.name,
-              airDate: item.airDate,
-              season: item.season,
-              episode: item.episode,
-            }}
-          />
-        )}
+        loading={loadingState === 'loading'}
+        refreshing={loadingState === 'refreshing'}
+        renderItem={({ item }) => <EpisodeCard episode={item}/>}
         onEndReached={loadEpisodes}
         onRefresh={refreshEpisodes}
       />
@@ -37,6 +29,7 @@ const EpisodesScreen = ({ episodes, loadEpisodes, refreshEpisodes }) => {
 
 const mapStateToProps = createStructuredSelector({
   episodes: episodesSelectors.episodes,
+  loadingState: episodesSelectors.loadingState,
 })
 
 const mapDispatchToProps = {

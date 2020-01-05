@@ -11,4 +11,8 @@ export default {
     getEpisodesState,
     data => data.episodes,
   ),
+  loadingState: createSelector(
+    getEpisodesState,
+    data => data.loadingState,
+  ),
 }
