@@ -37,7 +37,4 @@ const mapDispatchToProps = {
   refreshEpisodes: episodesActions.refresh.init,
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EpisodesScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(EpisodesScreen)
