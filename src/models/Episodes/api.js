@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { mapLinksToIds, mapResponse, mapSeasonNumber, mapEpisodeNumber } from '../../utils/mappers'
+import { mapLinksToIds, mapResponse, mapSeasonNumber, mapEpisodeNumber } from 'src/utils/mappers'
 
 const mapResults = (results) =>
   results.map(it => ({

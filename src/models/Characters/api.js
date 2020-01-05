@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { mapLinkToId, mapLinksToIds, mapResponse } from '../../utils/mappers'
+import { mapLinkToId, mapLinksToIds, mapResponse } from 'src/utils/mappers'
 
 const mapResults = (results) =>
   results.map(it => ({
@@ -15,7 +15,7 @@ const mapResults = (results) =>
     episodes: mapLinksToIds(it.episode),
   }))
 
-const getAll = (page = 1) =>
+const getAll = (page) =>
   axios
     .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
     .then(mapResponse(mapResults))
