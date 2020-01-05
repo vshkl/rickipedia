@@ -12,7 +12,7 @@ const mapResults = (results) =>
     characters: mapLinksToIds(it.characters),
   }))
 
-const getAll = (page = 1) =>
+const getAll = (page) =>
   axios
     .get(`https://rickandmortyapi.com/api/episode/?page=${page}`)
     .then(mapResponse(mapResults))

@@ -1,5 +1,5 @@
 import {
-  all, call, put, takeEvery, takeLatest, select,
+  all, call, put, takeEvery, takeLeading, select,
 } from 'redux-saga/effects'
 
 import actions from './actions'
@@ -9,18 +9,20 @@ import types from './types'
 
 function* loadEpisodes() {
   try {
-    const { next } = select(selectors.pagination)
+    const { next } = yield select(selectors.pagination)
 
-    const { results, info } = yield api.getAll()  //TODO: add real pagination logic
+    if (next) {
+      const { results, info } = yield api.getAll(next)
 
-    yield put(actions.load.success({
-      episodes: results,
-      pagination: {
-        current: next,
-        next: info.next,
-        previous: info.prev,
-      },
-    }))
+      yield put(actions.load.success({
+        episodes: results,
+        pagination: {
+          current: next,
+          next: info.next,
+          previous: info.prev,
+        },
+      }))
+    }
   } catch (error) {
     yield put(actions.load.failure())
   }
@@ -28,9 +30,9 @@ function* loadEpisodes() {
 
 function* refreshEpisodes() {
   try {
-    const { results, info } = yield api.getAll()
+    const { results, info } = yield api.getAll(1)
 
-    yield put(actions.load.success({
+    yield put(actions.refresh.success({
       episodes: results,
       pagination: {
         current: 1,
@@ -46,7 +48,7 @@ function* refreshEpisodes() {
 export default function* () {
   yield all([
     call(function* watch() {
-      yield takeEvery(types.load.init, loadEpisodes)
+      yield takeLeading(types.load.init, loadEpisodes)
       yield takeEvery(types.refresh.init, refreshEpisodes)
     }),
   ])

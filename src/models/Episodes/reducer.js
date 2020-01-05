@@ -4,8 +4,8 @@ const initialState = {
   loading: false,
   episodes: [],
   pagination: {
-    current: 1,
-    next: null,
+    current: null,
+    next: 1,
     previous: null,
   },
 }
@@ -21,7 +21,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        episodes: [...state.episodes, payload.episode],
+        episodes: [...state.episodes, ...payload.episodes],
         pagination: payload.pagination,
       }
     case types.load.failure:
@@ -38,7 +38,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        episodes: payload.episode,
+        episodes: payload.episodes,
         pagination: payload.pagination,
       }
     case types.refresh.failure:
