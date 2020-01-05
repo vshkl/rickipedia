@@ -3,10 +3,10 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import CharacterCard from '../../components/CharacterCard'
-import List from '../../components/List'
-import charactersActions from '../../models/Characters/actions'
-import charactersSelectors from '../../models/Characters/selectors'
+import CharacterCard from 'src/components/CharacterCard'
+import List from 'src/components/List'
+import charactersActions from 'src/models/Characters/actions'
+import charactersSelectors from 'src/models/Characters/selectors'
 
 const CharactersScreen = ({ characters, loadingState, loadCharacters, refreshCharacters }) => {
   useEffect(() => {

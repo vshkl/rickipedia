@@ -3,10 +3,10 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import EpisodeCard from '../../components/EpisodeCard'
-import List from '../../components/List'
-import episodesActions from '../../models/Episodes/actions'
-import episodesSelectors from '../../models/Episodes/selectors'
+import EpisodeCard from 'src/components/EpisodeCard'
+import List from 'src/components/List'
+import episodesActions from 'src/models/Episodes/actions'
+import episodesSelectors from 'src/models/Episodes/selectors'
 
 const EpisodesScreen = ({ episodes, loadingState, loadEpisodes, refreshEpisodes }) => {
   useEffect(() => {
